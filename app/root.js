@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/header";/
+import Header from "./components/header";
 //公共头部
 import Player from "./page/player";
 //播放器页面
