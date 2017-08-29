@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';//只会刷新新的状态并不会刷新页面
+import { AppContainer } from 'react-hot-loader';
+//只会刷新新的状态并不会刷新页面
 import Root from "./root";
 
 render(

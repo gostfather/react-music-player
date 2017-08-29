@@ -1,10 +1,16 @@
 import React from "react";
-import Header from "./components/header";
+import Header from "./components/header";/
+//公共头部
 import Player from "./page/player";
+//播放器页面
 import MusicList from "./page/musicList";
+//列表页面
 import { MUSIC_LIST } from "./config/config";
+//音乐列表
 import {Router , IndexRoute , Link , Route , hashHistory} from "react-router";
+//路由
 import Pubsub from "pubsub-js";
+//事件订阅发布模块
 
 class Root extends React.Component{
 	render(){
@@ -63,8 +69,8 @@ class App extends React.Component{
 			})
 		});
 		Pubsub.subscribe("Play_Music",(msg,musicItem)=>{
-		
 			this.playMusic(musicItem);
+			this.props.history.pushState(null, '/');//跳转到当前播放歌曲
 		});
 		Pubsub.subscribe("Play_Prev",(msg,musicItem)=>{
 			this.playNext("prev");
@@ -75,6 +81,7 @@ class App extends React.Component{
 		
 	}
 	componentWillUnmount(){
+		//解除监听和订阅
 		Pubsub.unsubscribe("Delete_Music");
 		Pubsub.unsubscribe("Play_Music");
 		Pubsub.unsubscribe("Play_Next");
